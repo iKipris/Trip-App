@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&callback=initMap&language=el&key=AIzaSyCNG0jRQBKX4WBQ2SUpO_fBkHnTJk6InzQ" ></script>
+    <title>Trip Cost Estimation</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Custom styles for this template-->
+    <link href="mycss.css" rel="stylesheet">
+	
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Trip app <sup>2</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            
+            
+
+            
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" >
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+                
+			
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>GitHub</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Linkedin</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+            <div class="sidebar-card">
+                <i class="fas fa-route fa-4x pb-3"></i>
+                <p class="text-center mb-2"><strong>About Charges</strong> : There are more charges beside distance discover them below</p>
+                <a class="btn btn-warning btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Check charges </a>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1  class="h3 mb-0 text-gray-800 m-auto pt-3">Costimation</h1>
+                        
+                    </div>
+
+                    
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold ">Estimate your trip cost</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-1 pb-1 ">
+                                        <div class="mt-0 text-center small">
+                                        
+                                        <label class="radio-inline"><input id="mode4" type="radio" name="optradio1" onclick="myFunction1()">
+                                        <span class="mr-2">
+                                            <i class="fas fa-money-bill-wave"></i> Avoid Tolls
+                                        </span>
+                                        </label>
+                                        
+                                        <label class="radio-inline"><input id="mode5" type="radio" name="optradio2" onclick="myFunction1()">
+                                        <span class="mr-2">
+                                            <i class="fas fa-road"></i> Avoid Highways
+                                        </span>
+                                        </label>
+									
+                                    </div>
+                                        <form action="" style="max-width:500px;margin:auto">
+  
+											<div class="input-container p-1">
+												<i class="fa fa-map-marked-alt fa-2x bg-gradient-primary icon"></i>
+												<input class="input-field" type="text" placeholder="Starting Point" id="from_places">
+												<input id="origin" name="origin" required="" type="hidden" />
+											</div>
+
+											<div class="input-container p-1">
+												<i class="fa fa-map-marked-alt fa-2x icon bg-gradient-primary"></i>
+												<input class="input-field" type="text" placeholder="Destination" id="to_places">
+												<input id="destination" name="destination" required="" type="hidden"/>
+											</div>
+											<div class="input-container p-1">
+												<i class="fa fa-map-marked-alt fa-2x icon bg-gradient-primary"></i>
+												<input class="input-field" type="text" placeholder="Via (Optional)" id="waypoint_places">
+												<input id="waypoint" name="waypoint" required="" type="hidden"/>
+											</div>
+  
+											
+											<div class="input-container p-1">
+												<i class="fa fa-car-alt fa-2x icon bg-gradient-primary"></i>
+												<select class="input-field" id="triptype" name="triptype" onchange="myFunction1()">
+													<option value="singletrip" id="trip1">Single Trip</option>
+													<option value="roundtrip" id="trip2">Round Trip</option>
+                            
+                            
+												</select>
+											</div>
+										</form> 
+										
+										
+                                    </div>
+                                    <div class="mt-3 text-center small">
+                                        <label class="radio-inline"><input id="mode1" type="radio" name="optradio"  onclick="myFunction1()" checked>
+                                        <span class="mr-2">
+                                            <i class="fas fa-car"></i> Driving
+                                        </span>
+                                        </label>
+                                        
+                                        <label class="radio-inline"><input id="mode2" type="radio" name="optradio" onclick="myFunction1()">
+                                        <span class="mr-2">
+                                            <i class="fas fa-walking"></i> Walking
+                                        </span>
+                                        </label>
+                                        
+                                        <label class="radio-inline"><input id="mode3" type="radio" name="optradio" onclick="myFunction1()">
+                                        <span class="mr-2">
+                                            <i class="fas fa-bicycle"></i> Bicycling
+                                        </span>
+                                        </label>
+									
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						<!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold ">Trip Overview</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area overflow-hidden">
+          <div id="map"></div>                              
+ <div id="awesome" class="panel" hidden>
+</div>
+<div id="ContactUs" class="alert alert-danger" hidden>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.We remind you that bicycling information are unavaible for Greece.
+  </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class=" font-weight-bold text-primary text-uppercase mb-1">
+                                                Distance (Kilometers)</div>
+                                            <div id="mydistancee" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-road fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Duration (Estimation)</div>
+                                            <div id="mydurationn" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+											</div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div  class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Price (Per Kilometer)</div>
+                                            <div id="priceperkm" class="h6 mb-0 font-weight-bold text-gray-800" hidden>
+                                                <input class="input-field1" type="text" placeholder="$ / km" id="consumption" >
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-tags fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div  class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total price (charges) </div>
+                                            <div id="totalprice" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+
+<!-- Custom scripts for all pages-->
+<script src="myscript.js"></script>
+</body>
+
+</html>
